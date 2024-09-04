@@ -30,6 +30,7 @@ export const deleteMessage = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
 
   const message = await Message.findById(id);
+
   if (!message) {
     return next(new ErrorHandler('Message Already Deleted', 400));
   }
