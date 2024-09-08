@@ -8,6 +8,9 @@ import { errorMiddleware } from './middleware/error.js';
 import messageRouter from './router/messageRouter.js';
 import userRouter from './router/userRouter.js';
 import timelineRouter from './router/timelineRouter.js';
+import softwareApplicationRouter from './router/softwareApplicationRouter.js';
+import skillsRouter from './router/skillRouter.js';
+import projectRouter from './router/ProjectRouter.js';
 
 const app = express();
 
@@ -39,6 +42,9 @@ app.use(
 app.use('/api/v1/message', messageRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/timeline', timelineRouter);
+app.use('/api/v1/softwareapplication', softwareApplicationRouter);
+app.use('/api/v1/skill', skillsRouter);
+app.use('/api/v1/project', projectRouter);
 
 // Databse Connection
 dbConnection();

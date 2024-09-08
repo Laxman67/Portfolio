@@ -1,1 +1,0 @@
-crypto.randomBytes(20).toString('hex'); //key

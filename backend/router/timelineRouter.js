@@ -10,6 +10,6 @@ const timelineRouter = express.Router();
 
 timelineRouter.post('/add', isAuthenticated, postTimeline);
 timelineRouter.delete('/delete/:id', isAuthenticated, deleteTimeline);
-timelineRouter.get('/getall', isAuthenticated, getTimeline);
+timelineRouter.get('/getall', getTimeline);
 
 export default timelineRouter;
