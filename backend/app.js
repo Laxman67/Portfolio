@@ -22,7 +22,7 @@ dotenv.config({ path: './config/config.env' });
 // Cors cross origin resources
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_UR, process.env.DASHBOARD_UR],
+    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     credentials: true,
   })
