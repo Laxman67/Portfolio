@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux'; // Import Provider from react-redux
+import { Provider, useDispatch } from 'react-redux'; // Import Provider from react-redux
 import { store } from '../src/store/store'; // Import the configured Redux store
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
@@ -13,11 +13,17 @@ import ViewProject from './pages/ViewProject';
 import UpdateProject from './pages/UpdateProject';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
+import { getUser } from './store/slice/userSlices';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
   return (
-    <Provider store={store}>
-      {/* Wrap the Router with Provider and pass the store */}
+    <>
       <Router>
         <Routes>
           <Route path='/' element={<HomePage />} />
@@ -32,7 +38,7 @@ const App = () => {
         </Routes>
         <ToastContainer position='bottom-right' theme='dark' />
       </Router>
-    </Provider>
+    </>
   );
 };
 

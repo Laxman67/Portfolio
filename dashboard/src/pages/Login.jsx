@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearAllUserError, login } from '@/store/slice/userSlices';
 import { toast } from 'react-toastify';
 
+import SpecialLoadingButton from './sub-component/specialLoadingButton';
 export const description =
   "A login page with two columns. The first column has the login form with email and password. There's a Forgot your passwork link and a link to sign up if you do not have an account. The second column has a cover image.";
 
@@ -36,10 +37,13 @@ const Login = () => {
       toast.error(error);
       dispatch(clearAllUserError());
     }
+    console.log(isAuthenticated);
+
     if (isAuthenticated) {
+      toast.success('Login Success');
       navigateTo('/');
     }
-  }, [dispatch, isAuthenticated, error, loading]);
+  }, [dispatch, isAuthenticated, error, navigateTo, loading]);
   return (
     <div className='w-full lg:grid lg:min-h-[100vh] lg:grid-cols-2 xl:min-h-[100vh]'>
       <div className='min-h-[100vh] flex items-center justify-center py-12'>
@@ -80,9 +84,13 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <Button type='submit' className='w-full'>
-              Login
-            </Button>
+            {loading ? (
+              <SpecialLoadingButton content={'Logging In'} />
+            ) : (
+              <Button type='submit' className='w-full'>
+                Login
+              </Button>
+            )}
           </form>
         </div>
       </div>
