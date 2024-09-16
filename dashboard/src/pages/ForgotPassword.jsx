@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SpecialLoadingButton from './sub-component/specialLoadingButton';
+import { getUser } from '@/store/slice/userSlices';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState();
@@ -25,6 +26,7 @@ const ForgotPassword = () => {
   const handleForgotPassword = (e) => {
     e.preventDefault();
     dispatch(forgotPassword(email));
+    setEmail('');
   };
 
   useEffect(() => {
@@ -34,11 +36,12 @@ const ForgotPassword = () => {
     }
     // TODO
     if (isAuthenticated) {
-      // navigateTo('/pa');
+      navigateTo('/');
     }
 
     if (message) {
       toast.success(message);
+      dispatch(getUser());
     }
   }, [dispatch, isAuthenticated, error, message, navigateTo, loading]);
   return (

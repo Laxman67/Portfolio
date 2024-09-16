@@ -132,7 +132,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(userSlice.actions.loginFailed(error.response.data.message));
   }
 };
-export const getUser = (email, password) => async (dispatch) => {
+export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
 
   try {
@@ -146,7 +146,7 @@ export const getUser = (email, password) => async (dispatch) => {
     dispatch(userSlice.actions.loadUserFailed(error.response.data.message));
   }
 };
-export const logout = (email, password) => async (dispatch) => {
+export const logout = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
       'http://localhost:4000/api/v1/user/logout ',
