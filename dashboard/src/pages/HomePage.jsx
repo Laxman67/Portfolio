@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import { Tooltip } from '@/components/ui/tooltip';
 import { clearAllUserError, logout } from '@/store/slice/userSlices';
 import {
@@ -19,13 +20,24 @@ import {
   History,
   Home,
   LayoutGrid,
-  LibraryBig,
   LogOut,
   MessageSquareMore,
   Package,
+  Package2,
   PanelLeft,
+  PencilRuler,
   User,
 } from 'lucide-react';
+
+// Component-<Dashboard
+import Account from './sub-component/Account';
+import AddApplications from './sub-component/AddApplications';
+import AddProject from './sub-component/AddProject';
+import AddSkills from './sub-component/AddSkills';
+import AddTimeline from './sub-component/AddTimeline';
+import Dashboard from './sub-component/Dashboard';
+import Messages from './sub-component/Messages';
+
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -33,12 +45,14 @@ import { toast } from 'react-toastify';
 import { Button } from '@/components/ui/button';
 
 const HomePage = () => {
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState('Dashboard');
   const { isAuthenticated, error, user } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
   const handleLogout = (e) => {
+    e.preventDefault();
     dispatch(logout());
     toast.success('Logged Out');
   };
@@ -128,7 +142,7 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive('Add Skills')}
                   >
-                    <LibraryBig className='w-5 h-5 ' />
+                    <PencilRuler className='w-5 h-5 ' />
                     <span className='sr-only'>Add Skills</span>
                   </Link>
                 </TooltipTrigger>
@@ -277,9 +291,7 @@ const HomePage = () => {
         </aside>
         <header
           className='
-        sticky top-0 left-0 hidden w-14 flex-col border-r bg-background 
-        px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 max-[90px]
-         :h-[100px]'
+        sticky top-0 left-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:boder-0 sm:bg-transparent sm:px-6 max-[900px]:h-[100px]   '
         >
           <Sheet>
             <SheetTrigger asChild>
@@ -289,10 +301,162 @@ const HomePage = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side='left' className='sm:max-w-xs'>
-              <nav className='grid gap-6 text-lg font-medium'></nav>
+              <nav className='grid gap-6 text-lg font-medium'>
+                {/* Nav Icons */}
+                <Link className='group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg text-primary-foreground md:text-base '>
+                  <Package2 className='h-5 w-5 transition-all group-hover:scale-110' />
+                </Link>
+                {/* Dashboard */}
+                <Link
+                  href='#'
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === 'Dashboard'
+                      ? 'text-background'
+                      : 'text-muted-foreground hover:text-foreground '
+                  }`}
+                  onClick={() => setActive('Dashboard')}
+                >
+                  <Home className='h-5 w-5 ' />
+                  Dashbaord
+                </Link>
+
+                {/* Add Project */}
+                <Link
+                  href='#'
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === 'Add Project'
+                      ? 'text-background'
+                      : 'text-muted-foreground hover:text-foreground '
+                  }`}
+                  onClick={() => setActive('Add Project')}
+                >
+                  <FolderGit className='h-5 w-5 ' />
+                  Add Project
+                </Link>
+
+                {/*  Add Skills  */}
+                <Link
+                  href='#'
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === 'Add Skills'
+                      ? 'text-background'
+                      : 'text-muted-foreground hover:text-foreground '
+                  }`}
+                  onClick={() => setActive('Add Skills ')}
+                >
+                  <PencilRuler className='h-5 w-5 ' />
+                  Add Skills
+                </Link>
+
+                {/* Add Applications */}
+                <Link
+                  href='#'
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === 'Add Applications'
+                      ? 'text-background'
+                      : 'text-muted-foreground hover:text-foreground '
+                  }`}
+                  onClick={() => setActive('Add Applications')}
+                >
+                  <LayoutGrid className='h-5 w-5 ' />
+                  Add Applications
+                </Link>
+
+                {/* Account */}
+                <Link
+                  href='#'
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === 'Account'
+                      ? 'text-background'
+                      : 'text-muted-foreground hover:text-foreground '
+                  }`}
+                  onClick={() => setActive('Account')}
+                >
+                  <User className='h-5 w-5 ' />
+                  Account
+                </Link>
+
+                {/* Add Timeline */}
+                <Link
+                  href='#'
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === 'Add Timeline'
+                      ? 'text-background'
+                      : 'text-muted-foreground hover:text-foreground '
+                  }`}
+                  onClick={() => setActive('Add Timeline')}
+                >
+                  <History className='h-5 w-5 ' />
+                  Add Timeline
+                </Link>
+                {/* Messages */}
+                <Link
+                  href='#'
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === 'Messages'
+                      ? 'text-background'
+                      : 'text-muted-foreground hover:text-foreground '
+                  }`}
+                  onClick={() => setActive('Messages')}
+                >
+                  <MessageSquareMore className='h-5 w-5 ' />
+                  Messages
+                </Link>
+
+                {/* Logout */}
+                <Link
+                  className={`flex items-center gap-4 px-2.5  text-muted-foreground hover:text-foreground `}
+                  onClick={handleLogout}
+                >
+                  <LogOut className='h-5 w-5 ' />
+                  Logout
+                </Link>
+              </nav>
             </SheetContent>
           </Sheet>
+
+          <div className='flex items-center gap-4 md:grow-0 sm:ml-16 sm:mt-5'>
+            <img
+              className='w-20 h-20 rounded-full max-[900px]:hidden'
+              src={user && user.avatar && user.avatar.url}
+              alt='User Logo'
+            />
+            <h1 className='text-4xl max-[900px]:text-2xl'>
+              Welcome Back , {user.fullName}
+            </h1>
+          </div>
         </header>
+
+        {/* Main Section */}
+        {(() => {
+          switch (active) {
+            case 'Dashboard':
+              return <Dashboard />;
+              break;
+            case 'Add Project':
+              return <AddProject />;
+              break;
+            case 'Add Skills':
+              return <AddSkills />;
+              break;
+            case 'Add Applications':
+              return <AddApplications />;
+              break;
+
+            case 'Add Timeline':
+              return <AddTimeline />;
+              break;
+            case 'Messages':
+              return <Messages />;
+              break;
+            case 'Account':
+              return <Account />;
+              break;
+
+            default:
+              return <Dashboard />;
+          }
+        })()}
       </div>
     </>
   );

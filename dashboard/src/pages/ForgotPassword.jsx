@@ -34,7 +34,7 @@ const ForgotPassword = () => {
       toast.error(error);
       dispatch(clearAllForgotPasswordError());
     }
-    // TODO
+
     if (isAuthenticated) {
       navigateTo('/');
     }
