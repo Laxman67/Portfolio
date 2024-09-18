@@ -53,6 +53,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     instagramURL,
     facebookURL,
     twitterURL,
+    linkedInURL,
   } = req.body;
 
   // Create new user
@@ -144,6 +145,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     instagramURL: req.body.instagramURL,
     facebookURL: req.body.facebookURL,
     twitterURL: req.body.twitterURL,
+    linkedInURL: req.body.linkedInURL,
   };
 
   // Check for Files Update Reqest

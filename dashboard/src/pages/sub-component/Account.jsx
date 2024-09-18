@@ -30,17 +30,6 @@ const Account = () => {
               <Link
                 href='#'
                 className={
-                  selectedComponent === 'Update Password'
-                    ? 'font-semibold text-primary'
-                    : ''
-                }
-                onClick={() => setSelectedComponent('Update Password')}
-              >
-                Update Password
-              </Link>
-              <Link
-                href='#'
-                className={
                   selectedComponent === 'Update Profile'
                     ? 'font-semibold text-primary'
                     : ''
@@ -48,6 +37,17 @@ const Account = () => {
                 onClick={() => setSelectedComponent('Update Profile')}
               >
                 Update Profile
+              </Link>
+              <Link
+                href='#'
+                className={
+                  selectedComponent === 'Update Password'
+                    ? 'font-semibold text-primary'
+                    : ''
+                }
+                onClick={() => setSelectedComponent('Update Password')}
+              >
+                Update Password
               </Link>
             </nav>
             <div className='grid gap-6'>
