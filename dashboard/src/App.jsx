@@ -15,13 +15,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { getUser } from './store/slice/userSlices';
+import { getAllMessages } from './store/slice/messagesSlices';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser());
-  }, []);
+    dispatch(getAllMessages());
+  }, [dispatch]);
   return (
     <>
       <Router>
