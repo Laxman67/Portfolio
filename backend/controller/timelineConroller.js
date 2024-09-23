@@ -32,10 +32,10 @@ export const deleteTimeline = catchAsyncErrors(async (req, res, next) => {
   });
 });
 export const getTimeline = catchAsyncErrors(async (req, res, next) => {
-  const timeline = await Timeline.find().select('-createdAt -updatedAt -__v');
+  const timelines = await Timeline.find().select('-createdAt -updatedAt -__v');
 
   res.status(200).json({
     success: true,
-    timeline,
+    timelines,
   });
 });
