@@ -31,7 +31,6 @@ const Messages = () => {
     setMessageId(id);
     dispatch(deleteMessage(id));
   };
-
   useEffect(() => {
     if (error) {
       toast.error(error);
