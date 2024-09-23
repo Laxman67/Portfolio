@@ -34,7 +34,7 @@ const userSlice = createSlice({
       state.user = {};
       state.error = action.payload;
     },
-    loadUserRequest(state, action) {
+    loadUserRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
@@ -68,7 +68,7 @@ const userSlice = createSlice({
       state.user = {};
       state.error = action.payload;
     },
-    updatePasswordRequest(state, action) {
+    updatePasswordRequest(state) {
       state.loading = true;
       state.isUpdated = false;
       state.message = null;
@@ -86,7 +86,7 @@ const userSlice = createSlice({
       state.message = null;
       state.error = action.payload;
     },
-    updateProfileRequest(state, action) {
+    updateProfileRequest(state) {
       state.loading = true;
       state.isUpdated = false;
       state.message = null;
@@ -104,12 +104,12 @@ const userSlice = createSlice({
       state.message = null;
       state.error = action.payload;
     },
-    updateProfileResetAfterUpdate(state, action) {
+    updateProfileResetAfterUpdate(state) {
       state.error = null;
       state.isUpdated = false;
       state.message = null;
     },
-    clearAllError(state, action) {
+    clearAllError(state) {
       state.error = null;
     },
   },

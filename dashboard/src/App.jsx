@@ -1,7 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Provider, useDispatch } from 'react-redux'; // Import Provider from react-redux
-import { store } from '../src/store/store'; // Import the configured Redux store
+import { useDispatch } from 'react-redux'; // Import Provider from react-redux
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
@@ -16,6 +15,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { getUser } from './store/slice/userSlices';
 import { getAllMessages } from './store/slice/messagesSlices';
+import { getAllSkills } from './store/slice/skillSlice';
+import { getAllTimeline } from './store/slice/timelineSlices';
+import { getAllSoftwareApplication } from './store/slice/applicationslice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,9 @@ const App = () => {
   useEffect(() => {
     dispatch(getUser());
     dispatch(getAllMessages());
+    dispatch(getAllTimeline());
+    dispatch(getAllSkills());
+    dispatch(getAllSoftwareApplication());
   }, [dispatch]);
   return (
     <>
