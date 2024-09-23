@@ -19,7 +19,7 @@ export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler('User not found', 404));
     }
 
-    // actually we're passing req. object in nextso that we can extract it out to next middleware
+    // actually we're passing req. object in next so that we can extract it out to next middleware
     next();
   } catch (error) {
     return next(new ErrorHandler('Invalid or expired token', 401)); // Handle token errors
