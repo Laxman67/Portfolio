@@ -83,8 +83,6 @@ export const getAllSkills = () => async (dispatch) => {
     const { data } = await axios.get(`${BACKEND_URL}/getall`, {
       withCredentials: true,
     });
-    // TODO
-    console.log(data);
 
     dispatch(skillSlice.actions.getAllSkillsSuccess(data.skills));
     dispatch(skillSlice.actions.clearAllError());

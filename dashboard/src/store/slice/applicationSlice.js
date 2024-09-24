@@ -80,8 +80,6 @@ export const getAllSoftwareApplication = () => async (dispatch) => {
     const { data } = await axios.get(`${BACKEND_URL}/getall`, {
       withCredentials: true,
     });
-    // TODO
-    console.log(data);
 
     dispatch(
       applicationSlice.actions.getApplicationSoftwareSuccess(

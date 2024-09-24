@@ -7,6 +7,7 @@ import messagesReducer from './slice/messagesSlices';
 import timelineReducer from './slice/timelineSlices';
 import skillReducer from './slice/skillSlice';
 import applicationReducer from './slice/applicationslice';
+import projectReducer from './slice/projectSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     timeline: timelineReducer,
     skill: skillReducer,
     application: applicationReducer,
+    project: projectReducer,
   },
 });

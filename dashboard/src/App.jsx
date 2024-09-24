@@ -18,6 +18,7 @@ import { getAllMessages } from './store/slice/messagesSlices';
 import { getAllSkills } from './store/slice/skillSlice';
 import { getAllTimeline } from './store/slice/timelineSlices';
 import { getAllSoftwareApplication } from './store/slice/applicationslice';
+import { getAllProjects } from './store/slice/projectSlice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,11 +29,20 @@ const App = () => {
     dispatch(getAllTimeline());
     dispatch(getAllSkills());
     dispatch(getAllSoftwareApplication());
+    dispatch(getAllProjects());
   }, [dispatch]);
   return (
     <>
       <Router>
         <Routes>
+          <Route
+            path='*'
+            element={
+              <h2 className='scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0'>
+                Ohh!. Page Not Found 404
+              </h2>
+            }
+          />
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/password/forgot' element={<ForgotPassword />} />

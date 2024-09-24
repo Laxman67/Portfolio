@@ -49,7 +49,7 @@ export const AddProject = catchAsyncErrors(async (req, res, next) => {
       title,
       description,
       gitRepoLink,
-      projectLink,
+      projectLink, 
       technologies,
       stack,
       deployed,
