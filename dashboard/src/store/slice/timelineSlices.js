@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const timelineSlice = createSlice({
-  name: 'timelineSlice',
+  name: 'timeline',
   initialState,
   reducers: {
     getAllTimelineRequest(state) {
