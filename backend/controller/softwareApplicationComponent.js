@@ -46,6 +46,7 @@ export const addNewApplication = catchAsyncErrors(async (req, res, next) => {
 });
 export const deleteApplication = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
+
   const software_application = await SoftwareApplication.findById(id);
   if (!software_application) {
     return next(new ErrorHandler('Software Application Not Found', 404));
