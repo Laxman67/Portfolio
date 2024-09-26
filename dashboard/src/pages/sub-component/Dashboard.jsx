@@ -52,7 +52,7 @@ const Dashboard = () => {
     try {
       dispatch(deleteSoftwareApplication(id));
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error);
       dispatch(clearAllApplicationSliceError());
     }
   };
@@ -68,6 +68,7 @@ const Dashboard = () => {
       dispatch(getAllSoftwareApplication());
     }
   }, [dispatch, message, error, loading]);
+
   return (
     <div className='flex flex-col sm:gap-4 sm:py-4 sm:pl-14'>
       <main
@@ -286,7 +287,7 @@ const Dashboard = () => {
                                   />
                                 ) : (
                                   <Button
-                                    className='bg-red-500'
+                                    className='bg-red-600 hover:bg-red-800'
                                     onClick={() => handleAppDelete(element._id)}
                                   >
                                     <Trash2 />
@@ -326,25 +327,31 @@ const Dashboard = () => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {timeline && timeline.length > 0
-                        ? timeline.map(({ _id, title, timeline }) => {
-                            return (
-                              <TableRow key={_id} className='bg-accent'>
-                                <TableCell className='font-medium'>
-                                  {title}
-                                </TableCell>
-                                <TableCell className='md:table-cell'>
-                                  {timeline.from}
-                                </TableCell>
-                                <TableCell className='md:table-cell text-right'>
-                                  {timeline.to && timeline.to
-                                    ? timeline.to
-                                    : 'Present'}
-                                </TableCell>
-                              </TableRow>
-                            );
-                          })
-                        : ''}
+                      {timeline && timeline.length > 0 ? (
+                        timeline.map(({ _id, title, timeline }) => {
+                          return (
+                            <TableRow key={_id} className='bg-accent'>
+                              <TableCell className='font-medium'>
+                                {title}
+                              </TableCell>
+                              <TableCell className='md:table-cell'>
+                                {timeline.from}
+                              </TableCell>
+                              <TableCell className='md:table-cell text-right'>
+                                {timeline.to && timeline.to
+                                  ? timeline.to
+                                  : 'Present'}
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })
+                      ) : (
+                        <TableRow>
+                          <TableCell className='text-xl text-red-500 font-semibold italic'>
+                            You have not added any Timlelines
+                          </TableCell>
+                        </TableRow>
+                      )}
                     </TableBody>
                   </Table>
                 </CardContent>

@@ -340,7 +340,7 @@ const AddProject = () => {
                   onClick={handleAddNewProject}
                   className='w-full'
                 >
-                  Add Skill
+                  Add Project
                 </Button>
               )}
             </div>

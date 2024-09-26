@@ -58,6 +58,21 @@ const projectSlice = createSlice({
       state.error = action.payload;
       state.message = null;
     },
+    updateProjectRequest(state) {
+      state.loading = true;
+      state.error = null;
+      state.message = null;
+    },
+    updateProjectSuccess(state, action) {
+      state.loading = false;
+      state.error = null;
+      state.message = action.payload;
+    },
+    updateProjectFailed(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+      state.message = null;
+    },
     resetSlice(state) {
       state.error = null;
       state.message = null;
@@ -105,7 +120,7 @@ export const addNewProjects = (projectData) => async (dispatch) => {
 export const deleteProjects = (id) => async (dispatch) => {
   dispatch(projectSlice.actions.deleteProjectRequest());
   try {
-    const { data } = await axios.delete(`${BACKEND_URL}/add/${id}`, {
+    const { data } = await axios.delete(`${BACKEND_URL}/delete/${id}`, {
       withCredentials: true,
     });
 
@@ -114,6 +129,29 @@ export const deleteProjects = (id) => async (dispatch) => {
   } catch (error) {
     dispatch(
       projectSlice.actions.deleteProjectFailed(error.response.data.message)
+    );
+  }
+};
+
+export const updateProject = (id, updateData) => async (dispatch) => {
+  dispatch(projectSlice.actions.updateProjectRequest());
+  try {
+    const { data } = await axios.put(
+      `${BACKEND_URL}/update/${id}`,
+      { updateData },
+      {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    dispatch(projectSlice.actions.updateProjectSuccess(data.projects));
+    dispatch(projectSlice.actions.clearAllError());
+  } catch (error) {
+    dispatch(
+      projectSlice.actions.updateProjectFailed(error.response.data.message)
     );
   }
 };

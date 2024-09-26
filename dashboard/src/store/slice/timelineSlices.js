@@ -86,7 +86,7 @@ export const getAllTimeline = () => async (dispatch) => {
   }
 };
 
-export const deleteMessage = (id) => async (dispatch) => {
+export const deleteTimeline = (id) => async (dispatch) => {
   dispatch(timelineSlice.actions.deleteTimelineRequest());
   try {
     const { data } = await axios.delete(`${BACKEND_URL}/delete/${id}`, {
