@@ -7,7 +7,6 @@ const initialState = {
   loading: false,
   error: null,
   message: null,
-  singleProject: {},
 };
 const projectSlice = createSlice({
   name: 'project',
@@ -135,19 +134,20 @@ export const deleteProjects = (id) => async (dispatch) => {
 
 export const updateProject = (id, updateData) => async (dispatch) => {
   dispatch(projectSlice.actions.updateProjectRequest());
+
   try {
     const { data } = await axios.put(
       `${BACKEND_URL}/update/${id}`,
-      { updateData },
+      updateData,
       {
         withCredentials: true,
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       }
     );
 
-    dispatch(projectSlice.actions.updateProjectSuccess(data.projects));
+    dispatch(projectSlice.actions.updateProjectSuccess(data.message));
     dispatch(projectSlice.actions.clearAllError());
   } catch (error) {
     dispatch(

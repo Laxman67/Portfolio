@@ -63,6 +63,7 @@ export const deleteSkill = catchAsyncErrors(async (req, res, next) => {
 });
 export const updateSkill = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
+
   let skill = await Skills.findById(id);
   if (!skill) {
     return next(new ErrorHandler('Skill Not Found', 404));

@@ -133,7 +133,7 @@ const ManageProjects = () => {
                               </Tooltip>
                             </TooltipProvider>
 
-                            {/* Update Project */}
+                            {/* View Project */}
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
