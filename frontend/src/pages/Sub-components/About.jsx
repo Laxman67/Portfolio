@@ -8,7 +8,7 @@ const About = () => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/user/me/porfolio`,
-        { withCredentials: true }
+        
       );
       setUser(data.user);
     };

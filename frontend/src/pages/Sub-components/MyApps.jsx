@@ -7,10 +7,7 @@ const MyApps = () => {
   useEffect(() => {
     const getMyApps = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/softwareapplication/getall`,
-        {
-          withCredentials: true,
-        }
+        `${import.meta.env.VITE_BACKEND_URL}/softwareapplication/getall`
       );
 
       setApps(data.software_application);

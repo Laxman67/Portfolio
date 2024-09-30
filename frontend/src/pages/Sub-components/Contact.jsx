@@ -19,7 +19,6 @@ const Contact = () => {
         `${import.meta.env.VITE_BACKEND_URL}/message/send`,
         { senderName, subject, message },
         {
-          withCredentials: true,
           headers: { 'Content-Type': 'application/json' },
         }
       )

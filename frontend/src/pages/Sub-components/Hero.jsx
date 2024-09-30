@@ -18,8 +18,7 @@ const Hero = () => {
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/user/me/porfolio`,
-        { withCredentials: true }
+        `${import.meta.env.VITE_BACKEND_URL}/user/me/porfolio`
       );
       setUser(data.user);
     };

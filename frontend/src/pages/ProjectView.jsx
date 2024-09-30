@@ -18,9 +18,7 @@ const ProjectView = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/project/get/${id}`, {
-          withCredentials: true,
-        })
+        .get(`${import.meta.env.VITE_BACKEND_URL}/project/get/${id}`)
         .then((res) => {
           setTitle(res.data.project.title);
           setDescription(res.data.project.description);
