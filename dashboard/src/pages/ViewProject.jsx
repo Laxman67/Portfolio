@@ -19,7 +19,7 @@ const ViewProject = () => {
     // Fetch Particular Project based on id on Parameter-> url
     const getProject = async () => {
       await axios
-        .get(`http://localhost:4000/api/v1/project/get/${id}`, {
+        .get(`https://portfolio-oqta.onrender.com/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then(({ data }) => {

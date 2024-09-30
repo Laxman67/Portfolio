@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import axios from 'axios';
+const BACKEND_URL = `${import.meta.env.VITE_BACKEND_URL}/user`;
 
 const initialState = {
   loading: false,
@@ -15,7 +16,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    loginRequest(state, action) {
+    loginRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
@@ -120,7 +121,8 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const { data } = await axios.post(
-      'http://localhost:4000/api/v1/user/login ',
+      `${BACKEND_URL}/login `,
+
       { email, password },
       { withCredentials: true, headers: { 'Content-Type': 'application/json' } }
     );
@@ -135,7 +137,7 @@ export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
 
   try {
-    const { data } = await axios.get('http://localhost:4000/api/v1/user/me ', {
+    const { data } = await axios.get(`${BACKEND_URL}/me `, {
       withCredentials: true,
     });
 
@@ -147,12 +149,9 @@ export const getUser = () => async (dispatch) => {
 };
 export const logout = () => async (dispatch) => {
   try {
-    const { data } = await axios.get(
-      'http://localhost:4000/api/v1/user/logout ',
-      {
-        withCredentials: true,
-      }
-    );
+    const { data } = await axios.get(`${BACKEND_URL}/logout `, {
+      withCredentials: true,
+    });
 
     dispatch(userSlice.actions.loginSuccess(data.message));
     dispatch(userSlice.actions.clearAllError());
@@ -166,7 +165,7 @@ export const updatePassword =
     dispatch(userSlice.actions.updatePasswordRequest());
     try {
       const { data } = await axios.put(
-        'http://localhost:4000/api/v1/user/update/password',
+        `${BACKEND_URL}/update/password`,
         { currentPassword, newPassword, confirmNewPassword },
         {
           withCredentials: true,
@@ -186,14 +185,10 @@ export const updatePassword =
 export const updateProfile = (newData) => async (dispatch) => {
   dispatch(userSlice.actions.updateProfileRequest());
   try {
-    const { data } = await axios.put(
-      'http://localhost:4000/api/v1/user/update/me',
-      newData,
-      {
-        withCredentials: true,
-        headers: { 'Content-Type': 'multipart/form-data' }, //because from data will be comprises  of image/files
-      }
-    );
+    const { data } = await axios.put(`${BACKEND_URL}/update/me`, newData, {
+      withCredentials: true,
+      headers: { 'Content-Type': 'multipart/form-data' }, //because from data will be comprises  of image/files
+    });
 
     dispatch(userSlice.actions.updateProfileSuccess(data.message));
     dispatch(userSlice.actions.clearAllError());

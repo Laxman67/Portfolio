@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-const BACKEND_URL = 'http://localhost:4000/api/v1/message';
+const BACKEND_URL = `${import.meta.env.VITE_BACKEND_URL}/message`;
 
 const initialState = {
   loading: false,
@@ -43,7 +43,7 @@ const messagesSlice = createSlice({
       state.loading = false;
     },
 
-    resetMessageSlice(state, action) {
+    resetMessageSlice(state) {
       state.error = null;
       state.message = null;
       state.loading = false;

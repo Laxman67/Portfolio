@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import axios from 'axios';
-const BACKEND_URL = 'http://localhost:4000/api/v1';
+const BACKEND_URL = `${import.meta.env.VITE_BACKEND_URL}`;
 
 const initialState = {
   loading: false,
@@ -13,7 +13,7 @@ const forgotResetPassSlice = createSlice({
   name: 'forgotPassword',
   initialState,
   reducers: {
-    forgotPasswordRequest(state, action) {
+    forgotPasswordRequest(state) {
       state.loading = true;
       state.message = null;
       state.error = null;
@@ -29,7 +29,7 @@ const forgotResetPassSlice = createSlice({
       state.error = action.payload;
       state.message = null;
     },
-    resetPasswordRequest(state, action) {
+    resetPasswordRequest(state) {
       state.loading = true;
       state.message = null;
       state.error = null;
@@ -45,9 +45,8 @@ const forgotResetPassSlice = createSlice({
       state.error = action.payload;
       state.message = null;
     },
-    clearAllError(state, action) {
+    clearAllError(state) {
       state.error = null;
-      state = state;
     },
   },
 });
