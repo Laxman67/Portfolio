@@ -67,6 +67,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
       portfolioURL,
       githubURL,
       instagramURL,
+      linkedInURL,
       facebookURL,
       twitterURL,
       avatar: {
@@ -259,7 +260,7 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUserForProfile = catchAsyncErrors(async (req, res, next) => {
-  const id = '66d8943362e03a7ecd909025';
+  const id = '66f98676a3539cc5f72bac2e'; // id updated because of database uri changed
   const user = await User.findById(id);
   res.status(200).json({
     success: true,
