@@ -19,12 +19,13 @@ dotenv.config({ path: './config/config.env' });
 
 // Middleware
 
-// Cors cross origin resources
+
+// CORS configuration 
 app.use(
   cors({
-    origin: ["https://portfolio-t9ru.onrender.com/", process.env.DASHBOARD_URL],
+    origin: ["https://portfolio-t9ru.onrender.com/", process.env.DASHBOARD_URL], // Remove trailing slash
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
-    credentials: true,
+    credentials: true, // Allows cookies and other credentials in cross-origin requests
   })
 );
 
