@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,10 @@ const Portfolio = () => {
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/project/getall`
+        `${import.meta.env.VITE_BACKEND_URL}/project/getall`,
+        {
+          withCredentials: true,
+        }
       );
       setProjects(data.projects);
     };
