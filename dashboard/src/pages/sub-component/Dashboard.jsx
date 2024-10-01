@@ -28,7 +28,7 @@ import {
   deleteSoftwareApplication,
   getAllSoftwareApplication,
   resetApplicationSoftwareSlice,
-} from '@/store/slice/applicationslice';
+} from '@/store/slice/applicationSlice';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
