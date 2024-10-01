@@ -25,20 +25,13 @@ dotenv.config({ path: './config/config.env' });
 
 app.use(
   cors({
-    origin: ["https://portfolio-frontend-i43y.onrender.com", "https://your-dashboard-url.com"], // Ensure correct URLs
+    origin: ["https://portfolio-frontend-i43y.onrender.com", "https://portfolio-dashboard-bwfa.onrender.com"], // Ensure correct URLs
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     credentials: true,
   })
 );
 
 
-// app.use(
-//   cors({
-//     origin: ["https://portfolio-t9ru.onrender.com/", process.env.DASHBOARD_URL], // Remove trailing slash
-//     methods: ['GET', 'POST', 'DELETE', 'PUT'],
-//     credentials: true, // Allows cookies and other credentials in cross-origin requests
-//   })
-// );
 
 app.use(cookieParser());
 app.use(express.json());
