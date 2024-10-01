@@ -19,19 +19,18 @@ dotenv.config({ path: './config/config.env' });
 
 // Middleware
 
-
-// CORS configuration 
-
-
+// CORS configuration
 app.use(
   cors({
-    origin: ["https://portfolio-frontend-i43y.onrender.com", "https://portfolio-dashboard-bwfa.onrender.com"], // Ensure correct URLs
+    origin: [
+      'https://portfolio-frontend-i43y.onrender.com',
+      'https://portfolio-dashboard-bwfa.onrender.com',
+      'http://localhost:5173',
+    ], // Ensure correct URLs
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     credentials: true,
   })
 );
-
-
 
 app.use(cookieParser());
 app.use(express.json());
@@ -44,6 +43,16 @@ app.use(
   })
 );
 
+// Trust proxy configuration
+app.set('trust proxy', 1);
+
+// Middleware to log client IP address
+app.use((req, res, next) => {
+  console.log('Client IP:', req.ip); // Real client IP if trust proxy is set
+  next();
+});
+
+// API Routes
 app.use('/api/v1/message', messageRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/timeline', timelineRouter);
@@ -51,8 +60,10 @@ app.use('/api/v1/softwareapplication', softwareApplicationRouter);
 app.use('/api/v1/skill', skillsRouter);
 app.use('/api/v1/project', projectRouter);
 
-// Databse Connection
+// Database Connection
 dbConnection();
+
+// Error handling middleware
 app.use(errorMiddleware);
 
 export default app;
