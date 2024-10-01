@@ -11,7 +11,7 @@ import {
   clearAllApplicationSliceError,
   getAllSoftwareApplication,
   resetApplicationSoftwareSlice,
-} from '@/store/slice/applicationslice';
+} from '@/store/slice/applicationSlice';
 
 const AddApplications = () => {
   const [name, setName] = useState('');

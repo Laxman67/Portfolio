@@ -32,6 +32,7 @@ const Login = () => {
     setPassword('');
   };
 
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -42,7 +43,7 @@ const Login = () => {
       toast.success('Login Success');
       navigateTo('/');
     }
-  }, [dispatch, isAuthenticated, error, navigateTo, loading]);
+  }, [dispatch, isAuthenticated, error, navigateTo]);
   return (
     <div className='w-full lg:grid lg:min-h-[100vh] lg:grid-cols-2 xl:min-h-[100vh]'>
       <div className='min-h-[100vh] flex items-center justify-center py-12'>

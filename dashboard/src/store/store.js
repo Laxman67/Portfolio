@@ -6,7 +6,7 @@ import forgotResetPasswordReducer from './slice/forgotResetPasswordSlice';
 import messagesReducer from './slice/messagesSlices';
 import timelineReducer from './slice/timelineSlices';
 import skillReducer from './slice/skillSlice';
-import applicationReducer from './slice/applicationslice';
+import applicationReducer from './slice/applicationSlice';
 import projectReducer from './slice/projectSlice';
 
 export const store = configureStore({

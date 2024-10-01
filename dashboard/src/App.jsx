@@ -17,7 +17,7 @@ import { getUser } from './store/slice/userSlices';
 import { getAllMessages } from './store/slice/messagesSlices';
 import { getAllSkills } from './store/slice/skillSlice';
 import { getAllTimeline } from './store/slice/timelineSlices';
-import { getAllSoftwareApplication } from './store/slice/applicationslice';
+import { getAllSoftwareApplication } from './store/slice/applicationSlice';
 import { getAllProjects } from './store/slice/projectSlice';
 
 const App = () => {

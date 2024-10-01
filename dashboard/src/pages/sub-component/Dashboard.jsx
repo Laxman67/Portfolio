@@ -28,7 +28,7 @@ import {
   deleteSoftwareApplication,
   getAllSoftwareApplication,
   resetApplicationSoftwareSlice,
-} from '@/store/slice/applicationslice';
+} from '@/store/slice/applicationSlice';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -90,7 +90,7 @@ const Dashboard = () => {
               {/* TODO */}
               {/* <Link to={user.portfolioURL &&user.portfolioURL} target='_blank'> */}
               <Link //Remove This Line when todo will update
-                to='https://schoolcool2-frontend.onrender.com/'
+                to='https://portfolio-frontend-i43y.onrender.com'
                 target='_blank'
               >
                 <CardFooter>

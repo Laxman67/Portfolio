@@ -112,6 +112,7 @@ const userSlice = createSlice({
     },
     clearAllError(state) {
       state.error = null;
+      
     },
   },
 });
